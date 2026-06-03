@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Urgencias HEL</title>
+<meta name="description" content="Servicio de Urgencias · Hospital Ernest Lluch · Calatayud">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0e6b63">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Urgencias HEL">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+:root{
+  --g:#0e6b63; --gd:#0a4e48; --gl:rgba(14,107,99,.12);
+  --o:rgba(180,83,10,.12); --b:rgba(61,90,138,.12);
+  --p:rgba(122,62,116,.12); --s:rgba(0,0,0,.06);
+  --text:#1c1f22; --text2:#5a5f66;
+  --bg:#f4f1ea; --card:#fff; --border:#e4dfd4;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  background:var(--bg);color:var(--text);min-height:100dvh}
+
+/* HEADER */
+header{
+  background:var(--g);color:#fff;
+  padding:calc(env(safe-area-inset-top,0px) + 28px) 20px 28px;
+  text-align:center;
+  background-image:radial-gradient(circle at 80% 20%,rgba(255,255,255,.08),transparent 60%);
+}
+.logo{width:72px;height:72px;margin:0 auto 14px;display:block}
+header h1{font-size:26px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+header p{font-size:13px;opacity:.75;margin-top:5px;letter-spacing:.02em}
+
+/* INSTALL BANNER */
+#installBanner{
+  display:none;background:var(--gd);color:#fff;
+  padding:11px 16px;align-items:center;justify-content:space-between;gap:10px;
+  font-size:13px;
+}
+#installBanner.show{display:flex}
+#installBtn{
+  background:#fff;color:var(--g);border:none;border-radius:8px;
+  padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;
+}
+
+/* MAIN */
+main{padding:20px 16px calc(env(safe-area-inset-bottom,0px) + 32px);max-width:480px;margin:0 auto}
+
+.section{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--text2);margin:24px 0 10px}
+.section:first-child{margin-top:4px}
+
+/* CARDS */
+a.card,div.card{
+  display:flex;align-items:center;gap:14px;
+  background:var(--card);border:1px solid var(--border);border-radius:16px;
+  padding:16px;margin-bottom:10px;text-decoration:none;color:inherit;
+  transition:transform .12s,background .12s;cursor:pointer;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);
+}
+a.card:active{transform:scale(.97);background:#f8f6f1}
+div.card{opacity:.52;cursor:default}
+
+.icon{
+  width:50px;height:50px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:26px;
+}
+.icon.g{background:var(--g)}
+.icon.o{background:var(--o)}
+.icon.b{background:var(--b)}
+.icon.p{background:var(--p)}
+.icon.s{background:var(--s)}
+
+.txt{flex:1;min-width:0}
+.txt h2{font-size:16px;font-weight:600;line-height:1.2}
+.txt p{font-size:13px;color:var(--text2);margin-top:3px;line-height:1.3}
+
+.arr{color:#ccc;font-size:20px;flex-shrink:0}
+.badge{
+  font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--text2);background:var(--s);padding:3px 9px;border-radius:20px;white-space:nowrap;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;color:var(--text2);font-size:11.5px;
+  padding:0 16px calc(env(safe-area-inset-bottom,0px) + 20px);
+  line-height:1.7;
+}
+footer strong{color:var(--g)}
+</style>
+</head>
+<body>
+
+<div id="installBanner">
+  <span>📲 Añade esta app a tu pantalla de inicio</span>
+  <button id="installBtn">Instalar</button>
+</div>
+
+<header>
+  <svg class="logo" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="72" height="72" rx="16" fill="white" fill-opacity="0.2"/>
+    <rect x="30" y="11" width="12" height="50" rx="6" fill="white"/>
+    <rect x="11" y="30" width="50" height="12" rx="6" fill="white"/>
+  </svg>
+  <h1>Urgencias HEL</h1>
+  <p>Hospital Ernest Lluch · Calatayud</p>
+</header>
+
+<main>
+
+  <div class="section">Cuadrante de guardias</div>
+
+  <a class="card" href="https://docs.google.com/spreadsheets/d/12wqIOOEeCQGcLJDRHqsdymcOuZFNQ5C8Gbt8rSF6eDc/edit" target="_blank" rel="noopener">
+    <div class="icon g">📅</div>
+    <div class="txt">
+      <h2>Ver cuadrante</h2>
+      <p>Calendario de guardias y turnos MT</p>
+    </div>
+    <span class="arr">›</span>
+  </a>
+
+  <div class="section">Solicitudes</div>
+
+  <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSecuSTPSXXu-nPrPs3v9J4gVQZ_YAPJY9B4ORDIIqhmRYoJpA/viewform" target="_blank" rel="noopener">
+    <div class="icon o">🔄</div>
+    <div class="txt">
+      <h2>Cambio de guardia</h2>
+      <p>Solicitar un intercambio de turno</p>
+    </div>
+    <span class="arr">›</span>
+  </a>
+
+  <a class="card" href="https://docs.google.com/forms/d/e/1FAIpQLSflJ2kbKRNyhFpdXrHs8hTmeU9-v-ONKQ5aPkrRwZRLowKhBw/viewform" target="_blank" rel="noopener">
+    <div class="icon b">📋</div>
+    <div class="txt">
+      <h2>Permiso / Licencia</h2>
+      <p>Solicitar vacaciones u otro permiso</p>
+    </div>
+    <span class="arr">›</span>
+  </a>
+
+  <div class="section">Próximamente</div>
+
+  <div class="card">
+    <div class="icon p">🔬</div>
+    <div class="txt">
+      <h2>PROA</h2>
+      <p>Programa de optimización de antibióticos</p>
+    </div>
+    <span class="badge">Próximo</span>
+  </div>
+
+  <div class="card">
+    <div class="icon s">📚</div>
+    <div class="txt">
+      <h2>Protocolos</h2>
+      <p>Protocolos del Servicio de Urgencias</p>
+    </div>
+    <span class="badge">Próximo</span>
+  </div>
+
+</main>
+
+<footer>
+  <strong>Servicio de Urgencias</strong> · Hospital Ernest Lluch · Calatayud
+</footer>
+
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+
+let prompt;
+window.addEventListener('beforeinstallprompt', e=>{
+  e.preventDefault(); prompt=e;
+  document.getElementById('installBanner').classList.add('show');
+});
+document.getElementById('installBtn').addEventListener('click', async ()=>{
+  if(!prompt) return;
+  prompt.prompt();
+  await prompt.userChoice;
+  prompt=null;
+  document.getElementById('installBanner').classList.remove('show');
+});
+window.addEventListener('appinstalled',()=>{
+  document.getElementById('installBanner').classList.remove('show');
+});
+</script>
+</body>
+</html>

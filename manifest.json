@@ -1,0 +1,20 @@
+{
+  "name": "Urgencias HEL",
+  "short_name": "Urgencias",
+  "description": "Servicio de Urgencias · Hospital Ernest Lluch · Calatayud",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "background_color": "#0e6b63",
+  "theme_color": "#0e6b63",
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
