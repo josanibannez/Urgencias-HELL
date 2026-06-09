@@ -1,4 +1,4 @@
-const CACHE = 'urgencias-hell-v4';
+const CACHE = 'urgencias-hell-v5';
 // index.html NO se cachea — siempre se carga fresco de la red
 const ASSETS = ['./manifest.json', './icon.svg'];
 
@@ -8,8 +8,11 @@ self.addEventListener('install', e =>
 
 self.addEventListener('activate', e =>
   e.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+    caches.keys()
+      .then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
       .then(() => self.clients.claim())
+      .then(() => self.clients.matchAll({ type: 'window' }))
+      .then(clients => clients.forEach(client => client.navigate(client.url)))
   )
 );
 
