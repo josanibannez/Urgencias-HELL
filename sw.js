@@ -1,5 +1,6 @@
-const CACHE = 'urgencias-hell-v3';
-const ASSETS = ['./', './index.html', './manifest.json', './icon.svg'];
+const CACHE = 'urgencias-hell-v4';
+// index.html NO se cachea — siempre se carga fresco de la red
+const ASSETS = ['./manifest.json', './icon.svg'];
 
 self.addEventListener('install', e =>
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()))
@@ -13,13 +14,24 @@ self.addEventListener('activate', e =>
 );
 
 self.addEventListener('fetch', e => {
-  // Solo cachear recursos propios (no Google Sheets/Forms)
   if (!e.request.url.startsWith(self.location.origin)) return;
+
+  const url = new URL(e.request.url);
+
+  // index.html y raíz: siempre red primero, sin caché
+  if (url.pathname === '/' || url.pathname.endsWith('/') || url.pathname.endsWith('index.html')) {
+    e.respondWith(
+      fetch(e.request).catch(() => caches.match('./index.html'))
+    );
+    return;
+  }
+
+  // Resto de recursos (iconos, manifest): caché normal
   e.respondWith(
     caches.match(e.request).then(cached => cached || fetch(e.request).then(res => {
       const clone = res.clone();
       caches.open(CACHE).then(c => c.put(e.request, clone));
       return res;
-    })).catch(() => caches.match('./index.html'))
+    }))
   );
 });
